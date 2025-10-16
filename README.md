@@ -9,20 +9,24 @@ This repository is a Linux/SDL2 port of the original Win32 Falling Blocks exampl
 
 ## Build
 
+From the project root directory, run:
+
 ```bash
-make
+make -f src/Makefile
 ```
+
+All build artifacts, including the binary, will be placed in the `build/` directory.
 
 ## Run
 
 ```bash
-./falling_blocks
+./build/falling_blocks
 ```
 
 - To generate a screenshot (headless):
 
 ```bash
-SDL_VIDEODRIVER=offscreen ./falling_blocks --screenshot
+SDL_VIDEODRIVER=offscreen ./build/falling_blocks --screenshot
 ```
 
 This will write `screenshot.bmp` in the current directory.
