@@ -1,17 +1,30 @@
+
 CXX = g++
 CXXFLAGS = -std=c++17 -O2 `sdl2-config --cflags`
 LDFLAGS = `sdl2-config --libs` -lSDL2_ttf
-SRC = main.cpp game.cpp bitmapobject.cpp
-OBJ = $(SRC:.cpp=.o)
-TARGET = falling_blocks
+SRC = src/main.cpp src/game.cpp src/bitmapobject.cpp
+BUILDDIR = build
+OBJ = $(patsubst src/%.cpp,$(BUILDDIR)/%.o,$(SRC))
+TARGET = $(BUILDDIR)/falling_blocks
 
-all: $(TARGET)
+
+all: $(BUILDDIR) $(TARGET)
+
+$(BUILDDIR):
+	mkdir -p $(BUILDDIR)
+
 
 $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-%.o: %.cpp
+
+# Pattern rule to build objects from source files in src/
+$(BUILDDIR)/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+# Allow building from parent directory by specifying VPATH
+VPATH = .
+
+
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -rf $(BUILDDIR)
