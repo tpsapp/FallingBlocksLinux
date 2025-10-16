@@ -20,13 +20,22 @@ All build artifacts, including the binary, will be placed in the `build/` direct
 ## Run
 
 ```bash
-./build/falling_blocks
+cd build
+./falling_blocks
+```
+
+- To generate a screenshot:
+
+```bash
+cd build
+./falling_blocks --screenshot
 ```
 
 - To generate a screenshot (headless):
 
 ```bash
-SDL_VIDEODRIVER=offscreen ./build/falling_blocks --screenshot
+cd build
+SDL_VIDEODRIVER=offscreen ./falling_blocks --screenshot
 ```
 
 This will write `screenshot.bmp` in the current directory.
@@ -45,3 +54,30 @@ Below is a sample screenshot generated with the offscreen mode:
 
 - This port uses SDL2 for windowing, input, timing and rendering.
 - The Game Over dialog uses the SDL native message box for cross-platform compatibility.
+
+## Keyboard Shortcuts
+
+- UP or SPACE: Rotate block
+- LEFT: Move block left
+- RIGHT: Move block right
+- DOWN: Move block down
+- PAUSE: Pause game
+- ESCAPE: Exit game
+- F10: Take a screenshot
+- F12: Enable/Disable Debug Mode
+- TAB: Enable/Disable Cheat Mode
+
+### Debug Mode Shortcuts
+
+- SHIFT: Move block up
+- F1: Get a new block
+- F2 through F9: Choose specific block
+- PageUp: Increase game level
+- PageDown: Decrease game level
+- Home: Increase row count
+- End: Decrease row count
+
+### Cheat Mode Shortcuts
+
+- SHIFT: Move block up
+- F1: Get a new block

@@ -175,6 +175,20 @@ int main(int argc, char **argv)
 					if (gFB.GetDebug())
 						gFB.NewBlock(idx);
 				}
+				else if (k == SDLK_F10)
+				{
+					if (gFB.bmoMap.GetTexture())
+					{
+						if (SaveTextureToBMP(renderer, gFB.bmoMap.GetTexture(), "screenshot.bmp"))
+						{
+							std::cout << "Wrote screenshot.bmp\n";
+						}
+						else
+						{
+							std::cerr << "Failed to write screenshot.bmp\n";
+						}
+					}
+				}
 				else if (k == SDLK_PAGEUP)
 				{
 					if (gFB.GetDebug())
